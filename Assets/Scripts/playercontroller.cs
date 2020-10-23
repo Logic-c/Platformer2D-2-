@@ -79,7 +79,7 @@ public class playercontroller : MonoBehaviour
         Debug.Log(isRunning);
         if (direction.x < 0)
         {
-            myRenderer.flipX = true;
+            myRenderer.flipX = true; 
 
         }
         else if (direction.x > 0)
