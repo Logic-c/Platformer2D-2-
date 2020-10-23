@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -75,11 +74,13 @@ public class playercontroller : MonoBehaviour
         var isRunning = direction.x != 0;
         var isJumping = myRigidbody.velocity.y != 0;
         myAnimator.SetBool("IsJumping", isJumping);
-        if (direction.y < 0)
+        // if (direction.y < 0)
         myAnimator.SetBool("IsRunning", isRunning);
+        Debug.Log(isRunning);
         if (direction.x < 0)
         {
             myRenderer.flipX = true;
+
         }
         else if (direction.x > 0)
         {
