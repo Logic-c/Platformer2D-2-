@@ -10,20 +10,20 @@ public class playercontroller : MonoBehaviour
     [SerializeField] private float jumpForce; // une variable modifiable dans l'inspector (pour la hauteur du saut)
     [SerializeField] private LayerMask ground; // une variable pour détecter la Tilemap Collider 2D
 
-    private Controls controls;
-    private Vector2 direction;
+    private Controls controls; // une variable pour les Inputes
+    private Vector2 direction; // une variable pour définir les déplacements du Player
 
-    private bool isOnGround = false;
+    private bool isOnGround = false; // cette variable défini quand le joueur n'est pas sur le sol 
 
     private Rigidbody2D myRigidbody; // une variable pour modifier le RB du player
     private Animator myAnimator; // une variable pour modifer les transitions dans l'inspector 
     private SpriteRenderer myRenderer; // une variable pour modifier le sprite qui va s'afficher pendant les animations
 
     
-    private void OnEnable()
+    private void OnEnable() // fonction qui active les Inputs
     {
         controls = new Controls(); // on instancie l'input system cree dans unity
-        controls.Enable();
+        controls.Enable(); // 'idem' fonction qui active les Inputs
         controls.playercontrol.Move.performed += OnMovePerformed; // on lance la fonction OnMovePerformed
         controls.playercontrol.Move.canceled += OnMoveCanceled; // on lance la fonction OnMoveCanceled
         controls.playercontrol.Jump.performed += JumpOnperformed; // on lance la fonction OnJumpPerformed
@@ -34,30 +34,30 @@ public class playercontroller : MonoBehaviour
 
     }
 
-    private void Move_performed(InputAction.CallbackContext obj)
+    private void Move_performed(InputAction.CallbackContext obj) // fonction qui active les InputAction
     {
-        throw new System.NotImplementedException();
+        throw new System.NotImplementedException(); // fonction automatique 
     }
 
     private void JumpOnperformed(InputAction.CallbackContext obj) // si IsOnGround est vrai, on ajoute une force (JumpForce) vers le haut sur le Player
     {                                                             // puis on repasse à faux pour arrêter d'ajouter la force même si on continue d'enclencher l'input
-        if (isOnGround)
+        if (isOnGround) // condition si le player est sur le sol 
         {
-            myRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            isOnGround = false;
+            myRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // fonction pour définir la force du Jump
+            isOnGround = false; // fonction pour la détection du sol 
             
         }
 
     }
     private void OnMovePerformed(InputAction.CallbackContext obj) // la variable direction recupère la position (-1, 0 ou 1) des inputs enclenchés 
     {
-        direction = obj.ReadValue<Vector2>();
+        direction = obj.ReadValue<Vector2>(); // fonction pour définir la valeur de la direction 
        // Debug.Log(direction);
     }
 
-    private void OnMoveCanceled(InputAction.CallbackContext obj)
+    private void OnMoveCanceled(InputAction.CallbackContext obj) // fonction quand l'InputMove n'est pas activer 
     {
-        direction = Vector2.zero;
+        direction = Vector2.zero; // fonction pour stopper le déplacement 
     }
 
    
@@ -90,11 +90,11 @@ public class playercontroller : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) // si le Player collisionne avec un GameObject qui a le tag "Ground" IsOnGround passe en true pour que le Player puisse sauter
     {
-       if (other.gameObject.CompareTag("Ground"))
+       if (other.gameObject.CompareTag("Ground")) // fonction pour détecter les collisions 
        {
            // Debug.Log("Test");
-            isOnGround = true;
-       }
+            isOnGround = true; // fonction pour la détection du sol 
+        }
 
     }
 }

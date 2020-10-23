@@ -3,22 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class menue : MonoBehaviour
 {
-    public void play()
+    public void play() // une variable 
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SampleScene"); 
     }
    
     
     public void credits()
     {
 
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("Credits"); // fonction qui sert à lancer les credits
 
     }
 
     public void exit ()
     {
-        Debug.Log("Fin du jeu");
-        Application.Quit();
+        Debug.Log("Fin du jeu"); // fonction qui sert à quitter le jeu 
+        Application.Quit(); 
     }
 }
