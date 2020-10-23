@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class menue : MonoBehaviour
 {
-    public void play() // une variable 
+    public void play() 
     {
-        SceneManager.LoadScene("SampleScene"); 
+        SceneManager.LoadScene("SampleScene"); // fonction qui sert à lancer la scene de jeu 
     }
    
     
@@ -18,7 +18,7 @@ public class menue : MonoBehaviour
 
     public void exit ()
     {
-        Debug.Log("Fin du jeu"); // fonction qui sert à quitter le jeu 
+        Debug.Log("Fin du jeu"); // fonction qui sert à détecter le fonctionnement de "Fin du jeu" dans la console 
         Application.Quit(); 
     }
 }
