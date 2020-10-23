@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,12 +8,12 @@ public class Loading : MonoBehaviour
     [SerializeField] private GameObject loading1;
     [SerializeField] private string SceneToLoad;
 
-    public void LoadScene(string SceneToLoad)
+    public void LoadScene()
     {
-        StartCoroutine(Load(SceneToLoad));
+        StartCoroutine(Load());
     }
     
-    private IEnumerator Load(string SceneToLoad)
+    private IEnumerator Load()
     {
         var Loading_ScreenInstance = Instantiate(loading1);
         DontDestroyOnLoad(Loading_ScreenInstance);
@@ -32,24 +31,13 @@ public class Loading : MonoBehaviour
                 loadingAnimator.SetTrigger("Disparition");
 
             }
+
+           yield return new WaitForSeconds(AnimationTime);
+
         }
 
-        yield return new WaitForSeconds(AnimationTime);
-    
-    }
-    
-    
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
         
+    
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
